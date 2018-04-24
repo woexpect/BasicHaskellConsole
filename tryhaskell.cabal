@@ -1,0 +1,62 @@
+name:                tryhaskell
+version:             0.0
+synopsis:            Try Haskell!
+description:         Try Haskell!
+license:             BSD3
+license-file:        LICENSE
+author:              Chris Done
+maintainer:          chrisdone@gmail.com
+copyright:           2014 Chris Done
+category:            Education
+build-type:          Simple
+cabal-version:       >=1.8
+data-files:          Imports.hs
+                     static/css/fonts/Haskell.dev.svg
+                     static/css/fonts/Haskell.eot
+                     static/css/fonts/Haskell.svg
+                     static/css/fonts/Haskell.ttf
+                     static/css/fonts/Haskell.woff
+                     static/css/tryhaskell.css
+                     static/js/jquery.console.js
+                     static/js/tryhaskell.js
+                     static/js/tryhaskell.pages.js
+
+library
+  exposed-modules:   TryHaskell
+  hs-source-dirs:    src/
+  ghc-options:       -Wall
+  build-depends:     QuickCheck
+                   , aeson >= 0.8.0.1
+                   , base >= 4 && < 5
+                   , bifunctors
+                   , blaze
+                   , bytestring >= 0.10.4.0
+                   , containers
+                   , foreign-store
+                   , hashable
+                   , lucid >= 2.6
+                   , mtl
+                   , mueval
+                   , old-locale
+                   , process-extras
+                   , pure-io
+                   , safe
+                   , show
+                   , snap-core
+                   , snap-server
+                   , text
+                   , time
+                   , unordered-containers
+                   , lrucache
+
+executable tryhaskell
+  hs-source-dirs:    src/main
+  main-is:           Main.hs
+  build-depends:     base, tryhaskell
+  ghc-options:       -Wall -O2 -threaded
+
+test-suite test
+    type: exitcode-stdio-1.0
+    main-is: Main.hs
+    hs-source-dirs: src/test
+    build-depends: base, tryhaskell
